@@ -58,6 +58,10 @@ public class ChristmasAchievement implements Achievement {
 	 * @return
 	 */
 	private boolean checkDate(String dateTime) {
+		if (dateTime == null) {
+			LOG.error("Activity date is null!");
+			return false;
+		}
 		LocalDateTime localDateTime = LocalDateTime.parse(dateTime, formatter);
 		LOG.debug("Date is " + localDateTime);
 		boolean correctMonth = localDateTime.getMonth().equals(Month.DECEMBER);

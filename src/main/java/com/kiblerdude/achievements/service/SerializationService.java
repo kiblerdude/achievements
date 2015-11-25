@@ -1,6 +1,7 @@
 package com.kiblerdude.achievements.service;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Optional;
 
 import org.apache.log4j.Logger;
@@ -14,7 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author kiblerj
  *
  */
-public class SerializationService {
+public final class SerializationService {
 
 	private static final Logger LOG = Logger.getLogger(SerializationService.class);
 
@@ -39,6 +40,27 @@ public class SerializationService {
 			LOG.error(e);
 			return Optional.empty();
 		}
+	}
+
+	/**
+	 * Serializes the provided <code>object</code> to JSON and writes the
+	 * results to the provided <code>path</code>.
+	 * 
+	 * @param object
+	 *            The object to serialize to JSON.
+	 * @param path
+	 *            The file path to save the serialized object to.
+	 * @return <code>true</code> if the JSON was saved to the file,
+	 *         <code>false</code> otherwise.
+	 */
+	public <T extends Object> boolean serialize(T object, Path path) {
+		try {
+			mapper.writeValue(path.toFile(), object);
+			return true;
+		} catch (IOException e) {
+			LOG.error(e);
+		}
+		return false;
 	}
 
 	/**

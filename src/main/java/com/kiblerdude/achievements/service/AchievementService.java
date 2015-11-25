@@ -19,7 +19,7 @@ import com.kiblerdude.achievements.domain.UserAchievement;
  * @author kiblerj
  *
  */
-public class AchievementService {
+public final class AchievementService {
 
 	private static final Logger LOG = Logger.getLogger(AchievementService.class);
 

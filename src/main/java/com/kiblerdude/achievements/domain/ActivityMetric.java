@@ -32,4 +32,6 @@ public final class ActivityMetric {
 	public List<Integer> getData() {
 		return Collections.unmodifiableList(data);
 	}
+	
+	// No need for toString, equals, or hashcode yet
 }
