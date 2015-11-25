@@ -1,0 +1,9 @@
+{
+    "user_id": "joe",
+    "activity_type": "fuel",
+    "date_time": "2015-08-24T20:00:08",
+    "metric": {
+        "type": "fuel",
+        "data": [ 220, 123, 88 ]
+    }
+}
