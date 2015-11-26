@@ -55,7 +55,7 @@ public final class AchievementService {
             }
         }
 
-        return achievementsEarned;
+        return Collections.unmodifiableList(achievementsEarned);
     }
 
 }

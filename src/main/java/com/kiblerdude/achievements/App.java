@@ -25,7 +25,7 @@ import com.kiblerdude.achievements.types.ChristmasAchievement;
  * 
  * Loads user activity from data files and outputs any achievements earned.
  */
-public class App {
+public final class App {
     private static final Logger LOG = Logger.getLogger(App.class);
 
     private final List<String> files;

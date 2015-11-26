@@ -18,7 +18,7 @@ import com.kiblerdude.achievements.domain.ActivityMetric;
  * <li>The activity must be performed on December 25th
  * <li>The total fuel for the activity must be greater than 300
  */
-public class ChristmasAchievement implements Achievement {
+public final class ChristmasAchievement implements Achievement {
     
     private static final Logger LOG = Logger.getLogger(ChristmasAchievement.class);
 
