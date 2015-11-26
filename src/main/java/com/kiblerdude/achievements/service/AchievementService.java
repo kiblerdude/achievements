@@ -21,41 +21,41 @@ import com.kiblerdude.achievements.domain.UserAchievement;
  */
 public final class AchievementService {
 
-	private static final Logger LOG = Logger.getLogger(AchievementService.class);
+    private static final Logger LOG = Logger.getLogger(AchievementService.class);
 
-	private final List<Achievement> achievements;
+    private final List<Achievement> achievements;
 
-	public AchievementService(List<Achievement> achievements) {
-		this.achievements = Collections.unmodifiableList(achievements);
-	}
+    public AchievementService(List<Achievement> achievements) {
+        this.achievements = Collections.unmodifiableList(achievements);
+    }
 
-	/**
-	 * Processes a user {@link Activity} and returns a list of
-	 * {@link UserAchievement} the user earned from the activity.
-	 * 
-	 * @param activity
-	 *            The user's {@link Activity}.
-	 * @return List of {@link UserAchievement} earned from the activity.
-	 */
-	public List<UserAchievement> processActivity(Activity activity) {
-		if (activity == null) {
-			LOG.error("Activity is null!");
-			return Lists.newArrayList();
-		}
+    /**
+     * Processes a user {@link Activity} and returns a list of
+     * {@link UserAchievement} the user earned from the activity.
+     * 
+     * @param activity
+     *            The user's {@link Activity}.
+     * @return List of {@link UserAchievement} earned from the activity.
+     */
+    public List<UserAchievement> processActivity(Activity activity) {
+        if (activity == null) {
+            LOG.error("Activity is null!");
+            return Lists.newArrayList();
+        }
 
-		List<UserAchievement> achievementsEarned = Lists.newArrayList();
+        List<UserAchievement> achievementsEarned = Lists.newArrayList();
 
-		for (Achievement achievement : achievements) {
-			LOG.debug(format("Checking if user %s earned the %s achievement",
-					activity.getUserId(), achievement.getName()));
-			if (achievement.isAchieved(activity)) {
-				LOG.debug(format("User %s has earned the %s achievement!",
-						activity.getUserId(), achievement.getName()));
-				achievementsEarned.add(new UserAchievement(activity.getUserId(), achievement.getName()));
-			}
-		}
+        for (Achievement achievement : achievements) {
+            LOG.debug(format("Checking if user %s earned the %s achievement",
+                    activity.getUserId(), achievement.getName()));
+            if (achievement.isAchieved(activity)) {
+                LOG.debug(format("User %s has earned the %s achievement!",
+                        activity.getUserId(), achievement.getName()));
+                achievementsEarned.add(new UserAchievement(activity.getUserId(), achievement.getName()));
+            }
+        }
 
-		return achievementsEarned;
-	}
+        return achievementsEarned;
+    }
 
 }
